@@ -11,9 +11,11 @@ public class View {
         int opcion = 0;
         do {
             System.out.println("\n--- XESTOR COCHES ---");
-            System.out.println("1. Engadir Coche");
+            System.out.println("1. Añadir Coche");
             System.out.println("2. Mostrar velocidad");
-            System.out.println("3. Salir");
+            System.out.println("3. Avanzar");
+            System.out.println("4. Mostrar kilómetros");
+            System.out.println("5. Salir");
             System.out.print("Selecciona unha opción: ");
 
             opcion = new Scanner(System.in).nextInt();
@@ -37,16 +39,54 @@ public class View {
                     System.out.println("Se ha cambiado correctamente");
 
                 }
-
                 case 3 -> {
+
+                    System.out.println("Matricula: ");
+                    String matricula = new Scanner(System.in).next();
+
+                    System.out.println("Metros recorridos: ");
+                    double metros = new Scanner(System.in).nextDouble();
+
+                    boolean a = c.avanzar(matricula, metros);
+
+                    if (a == true) {
+                        System.out.println("El coche ha avanzado");
+                    }
+                    else {
+                        System.out.println("Algo ha fallado");
+                    }
+                }
+                case 4 -> {
+
+                    System.out.println("Matricula: ");
+                    String matricula = new Scanner(System.in).next();
+
+                    System.out.println("Kilómetros recorridos: "
+                            + c.miModel.getKilometros(matricula));
+                }
+
+                case 5 -> {
                     System.out.println("Chao hasta luego....");
                 }
             }
-        } while (opcion != 3);
+        } while (opcion != 5);
     }
 
     public boolean muestraVelocidad(String matricula, Integer v){
         System.out.println(matricula + ": " + v + "km/hr");
+        return true;
+    }
+    /**
+     * Muestra kilómetros recorridos
+     * @param matricula matrícula
+     * @param km kilómetros
+     * @return true si se mostró correctamente
+     */
+    public boolean mostrarKilometros(String matricula, double km){
+
+        System.out.println(matricula + ": "
+                + km + " km recorridos");
+
         return true;
     }
 }
