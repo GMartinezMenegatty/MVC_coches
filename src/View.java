@@ -10,13 +10,14 @@ public class View {
         Controller c = new Controller();
         int opcion = 0;
         do {
-            System.out.println("\n--- XESTOR COCHES ---");
+            System.out.println("\n--- GESTOR COCHES ---");
             System.out.println("1. Añadir Coche");
             System.out.println("2. Mostrar velocidad");
             System.out.println("3. Avanzar");
             System.out.println("4. Mostrar kilómetros");
-            System.out.println("5. Salir");
-            System.out.print("Selecciona unha opción: ");
+            System.out.println("5. Poner gasolina");
+            System.out.println("6. Salir");
+            System.out.print("Selecciona una opción: ");
 
             opcion = new Scanner(System.in).nextInt();
             switch (opcion) {
@@ -64,12 +65,29 @@ public class View {
                     System.out.println("Kilómetros recorridos: "
                             + c.miModel.getKilometros(matricula));
                 }
-
                 case 5 -> {
-                    System.out.println("Chao hasta luego....");
+
+                    System.out.println("Matricula: ");
+                    String matricula = new Scanner(System.in).next();
+
+                    System.out.println("Litros gasolina: ");
+                    double gasolina = new Scanner(System.in).nextDouble();
+
+                    boolean a = c.ponerGasolina(matricula, gasolina);
+
+                    if(a == true){
+                        System.out.println("Gasolina añadida");
+                    }
+                    else{
+                        System.out.println("Algo ha fallado");
+                    }
+                }
+
+                case 6 -> {
+                    System.out.println("Saliendo...");
                 }
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
     }
 
     public boolean muestraVelocidad(String matricula, Integer v){
@@ -86,6 +104,19 @@ public class View {
 
         System.out.println(matricula + ": "
                 + km + " km recorridos");
+
+        return true;
+    }
+    /**
+     * Muestra la gasolina actual
+     * @param matricula matrícula
+     * @param gasolina litros
+     * @return true si se mostró correctamente
+     */
+    public boolean mostrarGasolina(String matricula, double gasolina){
+
+        System.out.println(matricula + ": "
+                + gasolina + " litros");
 
         return true;
     }

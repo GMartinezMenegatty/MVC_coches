@@ -64,4 +64,28 @@ public class Controller {
 
         return false;
     }
+    /**
+     * Añade gasolina a un coche
+     * @param matricula matrícula del coche
+     * @param gasolina cantidad de gasolina a añadir
+     * @return true si se añadió correctamente
+     */
+    public boolean ponerGasolina(String matricula, double litros){
+
+        Coche c = miModel.getCoche(matricula);
+
+        if(c != null){
+
+            c.gasolina += litros;
+
+            miView.mostrarGasolina(
+                    matricula,
+                    c.gasolina
+            );
+
+            return true;
+        }
+
+        return false;
+    }
 }

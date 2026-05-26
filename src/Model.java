@@ -89,4 +89,30 @@ public class Model {
 
         return -1;
     }
+    /**
+     * hace avanzar un coche
+     * consume gasolina dependiendo de la velocidad
+     *
+     * @param matricula matricula
+     * @param metros metros recorridos
+     * @return kilometros actuales
+     */
+    public double Avanzar(String matricula, double metros){
+        Coche c = getCoche(matricula);
+
+        if(c != null){
+            double kmRecorridos = metros / 1000;
+            c.kilometros += kmRecorridos;
+
+            double consumo = kmRecorridos * c.velocidad * 0.01;
+
+            c.gasolina -= consumo;
+
+            if (c.gasolina < 0){
+                c.gasolina = 0;
+            }
+            return c.kilometros;
+        }
+        return -1;
+    }
 }
