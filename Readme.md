@@ -69,3 +69,9 @@ sequenceDiagram
     View-->>Controller: boolean
     deactivate View
 ```
+
+## Metodo Avanzar
+
+![captura1](imagen/captura1.png)
+![captura1](imagen/captura2.png)
+![captura1](imagen/captura3.png)
